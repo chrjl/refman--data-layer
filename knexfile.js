@@ -13,7 +13,7 @@ module.exports = {
       directory: './migrations/knex',
     },
     seeds: {
-      directory: './seeds',
+      directory: './seeds/knex',
     },
     useNullAsDefault: true,
   },
