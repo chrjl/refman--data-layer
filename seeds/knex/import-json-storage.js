@@ -39,10 +39,10 @@ exports.seed = async function (knex) {
         };
 
         await knex.transaction(async (trx) => {
-          const id = await trx('items').returning('id').insert(item);
+          const key = await trx('items').returning('key').insert(item);
           await trx('keywords').insert(
             keywords.map((keyword) => ({
-              item_id: id[0].id,
+              item_key: key[0].key,
               keyword,
             }))
           );

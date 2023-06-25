@@ -18,7 +18,7 @@ exports.down = function (knex) {
 };
 
 function collectionSchema(table) {
-  table.increments('id').primary();
+  table.increments('key').primary();
   table.string('title');
   table.string('url');
   table.json('details');

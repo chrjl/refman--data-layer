@@ -6,7 +6,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('keywords', (table) => {
     table.increments('_').primary();
-    table.integer('item_id');
+    table.integer('item_key');
     table.string('keyword');
   })
 };

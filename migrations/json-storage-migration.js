@@ -6,6 +6,8 @@ const dirname = {
   write: path.join(process.cwd(), 'json-storage/collection'),
 };
 
+console.log(dirname);
+
 fs.readdir(dirname.read).then((files) => {
   files.forEach((file) => {
     const readPath = path.join(dirname.read, file);
@@ -13,7 +15,7 @@ fs.readdir(dirname.read).then((files) => {
 
     parseFile(readPath).then((content) => {
       // transform fields
-      content.aliases = [path.parse(file).name];
+      content.ids = [path.parse(file).name];
       delete content.id;
 
       if ('publisher' in content) {
@@ -39,7 +41,7 @@ fs.readdir(dirname.read).then((files) => {
 
       // order fields
       const firstKeys = ['title', 'edition', 'author', 'publisher', 'url', 'type', 'entrysubtype'];
-      const lastKeys = ['aliases', 'keywords']
+      const lastKeys = ['ids', 'keywords']
 
       const headObj = {};
       const tailObj = {};
