@@ -5,8 +5,14 @@
  */
 exports.up = function (knex) {
   return knex.schema
-    .createTable('items', collectionSchema)
-    .createTable('trash', collectionSchema);
+    .createTable('items', (table) => {
+      table.increments('key').primary();
+      collectionSchema(table);
+    })
+    .createTable('trash', (table) => {
+      table.integer('key').primary();
+      collectionSchema(table);
+    });
 };
 
 /**
@@ -18,9 +24,7 @@ exports.down = function (knex) {
 };
 
 function collectionSchema(table) {
-  table.increments('key').primary();
   table.string('title');
   table.string('url');
   table.json('details');
 }
-
